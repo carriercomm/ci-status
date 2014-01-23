@@ -84,14 +84,14 @@ api version 1
 -------------
 
 
-| url                                          | Descrition |
-|----------------------------------------------|-|
-| /api/v1/cistatus/                            | List all categories |
-| /api/v1/cistatus/:cat                        | List all sub-categories of category ':cat' |
-| /api/v1/cistatus/:cat#latest                 | List all items of category ':cat' |
-| /api/v1/cistatus/:cat/:subcat                | List all items in sub-category ':subcat' of category ':cat' |
-| /api/v1/cistatus/:cat/:subcat#          | List all items in sub-category ':subcat' of category ':cat' |
-| /api/v1/cistatus/:cat/:subcat/:item          | List all items in sub-category ':subcat' of category ':cat' |
+| url | Descrition |
+|-----|------------|
+| /api/v1/cistatus/ | List all categories |
+| /api/v1/cistatus/:cat | List all sub-categories of category ':cat' |
+| /api/v1/cistatus/:cat#latest | List all items of category ':cat' |
+| /api/v1/cistatus/:cat/:subcat | List all items in sub-category ':subcat' of category ':cat' |
+| /api/v1/cistatus/:cat/:subcat# | List all items in sub-category ':subcat' of category ':cat' |
+| /api/v1/cistatus/:cat/:subcat/:item | List all items in sub-category ':subcat' of category ':cat' |
 
 
 
