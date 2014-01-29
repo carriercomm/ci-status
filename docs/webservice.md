@@ -1,20 +1,48 @@
-Webservice documentation
-########################
+# Webservice documentation #
+
 
 NOTICE: WORK IN PROGRESS
 
-Resources tree
-==============
+## Resources tree ##
 
-explaination
-------------
+#### explaination ####
 
 * level 1 [category]: main categorie, like, for example a version number
 * level 2 [sub-category]: sub-category inside a main category, for example a build target
 * level 3 [item]: final object, for example a build result
 
-json representation
--------------------
+## Webservice resources ##
+
+### Common between versions ###
+
+|      url       | Verb |         Description         |
+|----------------|------|-----------------------------|
+| /api/:version/ | GET  | List available api versions |
+
+
+#### API version 1.0 ####
+
+##### Methods #####
+
+| URL                                           | Verb    | Descrition                                                                |
+|-----------------------------------------------|---------|---------------------------------------------------------------------------|
+| /api/v1.0/cistatus/                           | GET     | List all categories                                                       |
+| /api/v1.0/cistatus/:cat                       | GET     | List all sub-categories of category ':cat'                                |
+| /api/v1.0/cistatus/:cat?count=n               | GET     | List 'n' last build of each items belonging to category ':cat'            |
+| /api/v1.0/cistatus/:cat/:subcat               | GET     | List all items in sub-category ':subcat' of category ':cat'               |
+| /api/v1.0/cistatus/:cat/:subcat?count=n       | GET     | List 'n' last build of all items belonging to sub-category ':cat/:subcat' |
+| /api/v1.0/cistatus/:cat/:subcat/:item         | GET     | Display items ':item' in sub-category ':subcat' of category ':cat'        |
+| /api/v1.0/cistatus/:cat                       | POST    | Create the category ':cat'                                                |
+| /api/v1.0/cistatus/:cat/:subcat               | POST    | Create the sub-category ':subcat' of category ':cat'                      |
+| /api/v1.0/cistatus/:cat/:subcat/:item         | POST    | Create items ':item' in sub-category ':subcat' of category ':cat'         |
+| /api/v1.0/cistatus/:cat                       | PUT     | Alter the category ':cat'                                                 |
+| /api/v1.0/cistatus/:cat/:subcat               | PUT     | Alter the sub-category ':subcat' of category ':cat'                       |
+| /api/v1.0/cistatus/:cat/:subcat/:item         | PUT     | Alter items ':item' in sub-category ':subcat' of category ':cat'          |
+| /api/v1.0/cistatus/:cat                       | DELETE  | Alter the category ':cat'                                                 |
+| /api/v1.0/cistatus/:cat/:subcat               | DELETE  | Alter the sub-category ':subcat' of category ':cat'                       |
+| /api/v1.0/cistatus/:cat/:subcat/:item         | DELETE  | Alter items ':item' in sub-category ':subcat' of category ':cat'          |
+
+##### JSON sample #####
 
 ```json
 {
@@ -75,36 +103,3 @@ json representation
     ]
 }
 ```
-
-Webservice resources
-====================
-
-common between versions
------------------------
-
-|      url       |         Description         |
-|----------------|-----------------------------|
-| /api/:version/ | List available api versions |
-
-
-api version 1.0
----------------
-
-
-| URL                                           | Verb    | Descrition                                                                |
-|-----------------------------------------------|---------|---------------------------------------------------------------------------|
-| /api/v1.0/cistatus/                           | GET     | List all categories                                                       |
-| /api/v1.0/cistatus/:cat                       | GET     | List all sub-categories of category ':cat'                                |
-| /api/v1.0/cistatus/:cat?count=n               | GET     | List 'n' last build of each items belonging to category ':cat'            |
-| /api/v1.0/cistatus/:cat/:subcat               | GET     | List all items in sub-category ':subcat' of category ':cat'               |
-| /api/v1.0/cistatus/:cat/:subcat?count=n       | GET     | List 'n' last build of all items belonging to sub-category ':cat/:subcat' |
-| /api/v1.0/cistatus/:cat/:subcat/:item         | GET     | Display items ':item' in sub-category ':subcat' of category ':cat'        |
-| /api/v1.0/cistatus/:cat                       | POST    | Create the category ':cat'                                                |
-| /api/v1.0/cistatus/:cat/:subcat               | POST    | Create the sub-category ':subcat' of category ':cat'                      |
-| /api/v1.0/cistatus/:cat/:subcat/:item         | POST    | Create items ':item' in sub-category ':subcat' of category ':cat'         |
-| /api/v1.0/cistatus/:cat                       | PUT     | Alter the category ':cat'                                                 |
-| /api/v1.0/cistatus/:cat/:subcat               | PUT     | Alter the sub-category ':subcat' of category ':cat'                       |
-| /api/v1.0/cistatus/:cat/:subcat/:item         | PUT     | Alter items ':item' in sub-category ':subcat' of category ':cat'          |
-| /api/v1.0/cistatus/:cat                       | DELETE  | Alter the category ':cat'                                                 |
-| /api/v1.0/cistatus/:cat/:subcat               | DELETE  | Alter the sub-category ':subcat' of category ':cat'                       |
-| /api/v1.0/cistatus/:cat/:subcat/:item         | DELETE  | Alter items ':item' in sub-category ':subcat' of category ':cat'          |
