@@ -1,6 +1,5 @@
 # Webservice documentation #
 
-
 NOTICE: WORK IN PROGRESS
 
 ## Resources tree ##
@@ -24,23 +23,23 @@ NOTICE: WORK IN PROGRESS
 
 ##### Methods #####
 
-| URL                                           | Verb    | Descrition                                                                |
-|-----------------------------------------------|---------|---------------------------------------------------------------------------|
-| /api/v1.0/cistatus/                           | GET     | List all categories                                                       |
-| /api/v1.0/cistatus/:cat                       | GET     | List all sub-categories of category ':cat'                                |
-| /api/v1.0/cistatus/:cat?count=n               | GET     | List 'n' last build of each items belonging to category ':cat'            |
-| /api/v1.0/cistatus/:cat/:subcat               | GET     | List all items in sub-category ':subcat' of category ':cat'               |
-| /api/v1.0/cistatus/:cat/:subcat?count=n       | GET     | List 'n' last build of all items belonging to sub-category ':cat/:subcat' |
-| /api/v1.0/cistatus/:cat/:subcat/:item         | GET     | Display items ':item' in sub-category ':subcat' of category ':cat'        |
-| /api/v1.0/cistatus/:cat                       | POST    | Create the category ':cat'                                                |
-| /api/v1.0/cistatus/:cat/:subcat               | POST    | Create the sub-category ':subcat' of category ':cat'                      |
-| /api/v1.0/cistatus/:cat/:subcat/:item         | POST    | Create items ':item' in sub-category ':subcat' of category ':cat'         |
-| /api/v1.0/cistatus/:cat                       | PUT     | Alter the category ':cat'                                                 |
-| /api/v1.0/cistatus/:cat/:subcat               | PUT     | Alter the sub-category ':subcat' of category ':cat'                       |
-| /api/v1.0/cistatus/:cat/:subcat/:item         | PUT     | Alter items ':item' in sub-category ':subcat' of category ':cat'          |
-| /api/v1.0/cistatus/:cat                       | DELETE  | Alter the category ':cat'                                                 |
-| /api/v1.0/cistatus/:cat/:subcat               | DELETE  | Alter the sub-category ':subcat' of category ':cat'                       |
-| /api/v1.0/cistatus/:cat/:subcat/:item         | DELETE  | Alter items ':item' in sub-category ':subcat' of category ':cat'          |
+| URL                                  | Verb   | Descrition                                                                |
+|--------------------------------------|--------|---------------------------------------------------------------------------|
+| /api/v1.0/                           | GET    | List all categories                                                       |
+| /api/v1.0/:cat                       | GET    | List all sub-categories of category ':cat'                                |
+| /api/v1.0/:cat?count=n               | GET    | List 'n' last build of each items belonging to category ':cat'            |
+| /api/v1.0/:cat/:subcat               | GET    | List all items in sub-category ':subcat' of category ':cat'               |
+| /api/v1.0/:cat/:subcat?count=n       | GET    | List 'n' last build of all items belonging to sub-category ':cat/:subcat' |
+| /api/v1.0/:cat/:subcat/:item         | GET    | Display items ':item' in sub-category ':subcat' of category ':cat'        |
+| /api/v1.0/:cat                       | POST   | Create the category ':cat'                                                |
+| /api/v1.0/:cat/:subcat               | POST   | Create the sub-category ':subcat' of category ':cat'                      |
+| /api/v1.0/:cat/:subcat/:item         | POST   | Create items ':item' in sub-category ':subcat' of category ':cat'         |
+| /api/v1.0/:cat                       | PUT    | Alter the category ':cat'                                                 |
+| /api/v1.0/:cat/:subcat               | PUT    | Alter the sub-category ':subcat' of category ':cat'                       |
+| /api/v1.0/:cat/:subcat/:item         | PUT    | Alter items ':item' in sub-category ':subcat' of category ':cat'          |
+| /api/v1.0/:cat                       | DELETE | Alter the category ':cat'                                                 |
+| /api/v1.0/:cat/:subcat               | DELETE | Alter the sub-category ':subcat' of category ':cat'                       |
+| /api/v1.0/:cat/:subcat/:item         | DELETE | Alter items ':item' in sub-category ':subcat' of category ':cat'          |
 
 ##### JSON sample #####
 
