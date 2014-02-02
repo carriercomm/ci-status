@@ -23,23 +23,25 @@ NOTICE: WORK IN PROGRESS
 
 ##### Methods #####
 
-| URL                                  | Verb   | Descrition                                                                |
-|--------------------------------------|--------|---------------------------------------------------------------------------|
-| /api/v1.0/                           | GET    | List all categories                                                       |
-| /api/v1.0/:cat                       | GET    | List all sub-categories of category ':cat'                                |
-| /api/v1.0/:cat?count=n               | GET    | List 'n' last build of each items belonging to category ':cat'            |
-| /api/v1.0/:cat/:subcat               | GET    | List all items in sub-category ':subcat' of category ':cat'               |
-| /api/v1.0/:cat/:subcat?count=n       | GET    | List 'n' last build of all items belonging to sub-category ':cat/:subcat' |
-| /api/v1.0/:cat/:subcat/:item         | GET    | Display items ':item' in sub-category ':subcat' of category ':cat'        |
-| /api/v1.0/:cat                       | POST   | Create the category ':cat'                                                |
-| /api/v1.0/:cat/:subcat               | POST   | Create the sub-category ':subcat' of category ':cat'                      |
-| /api/v1.0/:cat/:subcat/:item         | POST   | Create items ':item' in sub-category ':subcat' of category ':cat'         |
-| /api/v1.0/:cat                       | PUT    | Alter the category ':cat'                                                 |
-| /api/v1.0/:cat/:subcat               | PUT    | Alter the sub-category ':subcat' of category ':cat'                       |
-| /api/v1.0/:cat/:subcat/:item         | PUT    | Alter items ':item' in sub-category ':subcat' of category ':cat'          |
-| /api/v1.0/:cat                       | DELETE | Alter the category ':cat'                                                 |
-| /api/v1.0/:cat/:subcat               | DELETE | Alter the sub-category ':subcat' of category ':cat'                       |
-| /api/v1.0/:cat/:subcat/:item         | DELETE | Alter items ':item' in sub-category ':subcat' of category ':cat'          |
+| URL                                  | Verb   | Description                                                       |
+|--------------------------------------|--------|-------------------------------------------------------------------|
+| /api/v1.0/                           | GET    | List all categories                                               |
+| /api/v1.0/:cat                       | GET    | List all sub-categories of category ':cat'                        |
+| /api/v1.0/:cat?count=n               | GET    | List 'n' last builds of each items of category ':cat'             |
+| /api/v1.0/:cat/:subcat               | GET    | List all items in category ':cat/:subcat'                         |
+| /api/v1.0/:cat/:subcat?count=n       | GET    | List 'n' last builds of all items in ':cat/:subcat'               |
+| /api/v1.0/:cat/:subcat/:item         | GET    | Display item ':item' in category ':cat/:subcat'                   |
+| /api/v1.0/:cat/:subcat/:item?count=n | GET    | List 'n' last builds of item ':item' in category ':cat/:subcat'   |
+| /api/v1.0/:cat/:subcat/:item/:build  | GET    | List the build ':build' of item ':cat/:subcat/:item'              |
+| /api/v1.0/:cat                       | POST   | Create the category ':cat'                                        |
+| /api/v1.0/:cat/:subcat               | POST   | Create the sub-category ':subcat' of category ':cat'              |
+| /api/v1.0/:cat/:subcat/:item         | POST   | Create items ':item' in sub-category ':subcat' of category ':cat' |
+| /api/v1.0/:cat                       | PUT    | Alter the category ':cat'                                         |
+| /api/v1.0/:cat/:subcat               | PUT    | Alter the sub-category ':subcat' of category ':cat'               |
+| /api/v1.0/:cat/:subcat/:item         | PUT    | Alter items ':item' in sub-category ':subcat' of category ':cat'  |
+| /api/v1.0/:cat                       | DELETE | Erase the category ':cat'                                         |
+| /api/v1.0/:cat/:subcat               | DELETE | Erase the sub-category ':subcat' of category ':cat'               |
+| /api/v1.0/:cat/:subcat/:item         | DELETE | Erase items ':item' in sub-category ':subcat' of category ':cat'  |
 
 ##### JSON sample #####
 
@@ -48,57 +50,40 @@ NOTICE: WORK IN PROGRESS
     "categories": [
         {
             "id": "1.3.0",
-            "desc": "Version 1.3.0",
+            "display_name": "V1.3.0",
+            "desc": "Version 1.3.0 of My project",
             "subcategories": [
                 {
                     "id": "linux_64",
+                    "display_name": "Linux 64 bits",
                     "desc": "Build for Linux 64 bits",
                     "items": [
                         {
-                            "id": "library 1",
-                            "status": "success",
-                            "build_log": "test 0: ok",
-                            "build_log_format": "clear_text",
-                            "date": "2013-10-10_10:15:15"
+                            "id": "library_1",
+                            "desc": "Library 1",
+                            "build": [ 
+                                {
+                                    "status": "OK",
+                                    "build_log": "test 0: ok",
+                                    "build_log_format": "clear_text",
+                                    "date": "2013-10-10_10:15:15",
+                                },
+                                {
+                                    "status": "KO",
+                                    "build_log": "test 0: KO",
+                                    "build_log_format": "clear_text",
+                                    "date": "2013-10-11_10:15:15"
+                                },
+                                ...
+                            ],
                         },
-                        {
-                            "id": "library 2",
-                            "status": "fail",
-                            "build_log": "test 1: ko"
-                            "build_log_format": "clear_text",
-                            "date": "2013-10-10_10:15:15"
-                        },
-                        {
-                            "id": "program",
-                            "status": "warning",
-                            "build_log": "test 2: ko"
-                            "build_log_format": "clear_text",
-                            "date": "2013-10-10_10:15:15"
-                        }
-                    ]
+                        ...
+                    ],
                 },
-                {
-                    "id": "linux_32",
-                    "desc": "Build for Linux 32 bits",
-                    "items": [
-                        {
-                            "id": "library 1",
-                            "status": "success",
-                            "build_log": "test 0: ok"
-                            "build_log_format": "clear_text",
-                            "date": "2013-10-10_10:15:15"
-                        },
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "1.3.1",
-            "desc": "Version",
-            "subcategories": [
                 ...
             ]
-        }
-    ]
+        },
+        ...
+    ],
 }
 ```
