@@ -42,18 +42,28 @@ NOTICE: WORK IN PROGRESS
 
 ##### query string #####
 
-Each resource can be filtered to only give a selection of fields:
+Resources accept query string parameters:
 
-query string:
+* Each resource can be filtered to only give a selection of fields:
+
+query string example:
 
 ```
-?fields=DisplayName,Desc,subcategories(DisplayName,Desc),items(DisplayName)
+?fields=category(displayName,Desc,subcategories),subcategories(displayName,Desc,items),items(displayName,build),build(status)
 ````
+* Each resource can be paginated:
+
+```
+?start=<int>&offset=<int>
+```
+
+At the root of the returned object, a field `lastPage` is set to `1` if it's the last page, `0` otherwise.
 
 ##### JSON sample #####
 
 ```json
 {
+    "lastPage" : "1",
     "categories": [
         {
             "id": "1.3.0",
