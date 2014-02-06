@@ -27,11 +27,8 @@ NOTICE: WORK IN PROGRESS
 |--------------------------------------|--------|-------------------------------------------------------------------|
 | /api/v1.0/                           | GET    | List all categories                                               |
 | /api/v1.0/:cat                       | GET    | List all sub-categories of category ':cat'                        |
-| /api/v1.0/:cat?count=n               | GET    | List 'n' last builds of each items of category ':cat'             |
 | /api/v1.0/:cat/:subcat               | GET    | List all items in category ':cat/:subcat'                         |
-| /api/v1.0/:cat/:subcat?count=n       | GET    | List 'n' last builds of all items in ':cat/:subcat'               |
 | /api/v1.0/:cat/:subcat/:item         | GET    | Display item ':item' in category ':cat/:subcat'                   |
-| /api/v1.0/:cat/:subcat/:item?count=n | GET    | List 'n' last builds of item ':item' in category ':cat/:subcat'   |
 | /api/v1.0/:cat/:subcat/:item/:build  | GET    | List the build ':build' of item ':cat/:subcat/:item'              |
 | /api/v1.0/:cat                       | POST   | Create the category ':cat'                                        |
 | /api/v1.0/:cat/:subcat               | POST   | Create the sub-category ':subcat' of category ':cat'              |
@@ -43,6 +40,16 @@ NOTICE: WORK IN PROGRESS
 | /api/v1.0/:cat/:subcat               | DELETE | Erase the sub-category ':subcat' of category ':cat'               |
 | /api/v1.0/:cat/:subcat/:item         | DELETE | Erase items ':item' in sub-category ':subcat' of category ':cat'  |
 
+##### query string #####
+
+Each resource can be filtered to only give a selection of fields:
+
+query string:
+
+```
+?fields=DisplayName,Desc,subcategories(DisplayName,Desc),items(DisplayName)
+````
+
 ##### JSON sample #####
 
 ```json
@@ -50,12 +57,12 @@ NOTICE: WORK IN PROGRESS
     "categories": [
         {
             "id": "1.3.0",
-            "display_name": "V1.3.0",
+            "displayName": "V1.3.0",
             "desc": "Version 1.3.0 of My project",
             "subcategories": [
                 {
                     "id": "linux_64",
-                    "display_name": "Linux 64 bits",
+                    "displayName": "Linux 64 bits",
                     "desc": "Build for Linux 64 bits",
                     "items": [
                         {
@@ -64,15 +71,15 @@ NOTICE: WORK IN PROGRESS
                             "build": [ 
                                 {
                                     "status": "OK",
-                                    "build_log": "test 0: ok",
-                                    "build_log_format": "clear_text",
-                                    "date": "2013-10-10_10:15:15",
+                                    "buildLog": "test 0: ok",
+                                    "buildLogFormat": "text",
+                                    "date": "2014-02-06T07:06:00+00:00",
                                 },
                                 {
                                     "status": "KO",
-                                    "build_log": "test 0: KO",
-                                    "build_log_format": "clear_text",
-                                    "date": "2013-10-11_10:15:15"
+                                    "buildLog": "test 0: KO",
+                                    "buildLog_format": "gzip",
+                                    "date": "2014-02-06T07:07:00+00:00"
                                 },
                                 ...
                             ],
