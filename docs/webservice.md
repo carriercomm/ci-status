@@ -46,18 +46,50 @@ Resources accept query string parameters:
 
 * Each resource can be filtered to only give a selection of fields:
 
-query string example:
+Positive filter:
 
 ```
-?fields=category(displayName,Desc,subcategories),subcategories(displayName,Desc,items),items(displayName,build),build(status)
+?fields=categories(displayName,Desc,subcategories),subcategories(displayName,Desc,items),items(displayName,build),build(status)
 ````
+
+Negative filter:
+
+```
+?nofields=categories(desc),subcategories(desc),items(desc),build(buildLog,buildLogFormat)
+
+```
+
+You cannot use Positive filter and Negative filter simultaneously.
+
 * Each resource can be paginated:
 
 ```
-?start=<int>&offset=<int>
+?size=<int>&offset=<int>
 ```
 
-At the root of the returned object, a field `lastPage` is set to `1` if it's the last page, `0` otherwise.
+size is number the depther type of object to display. For example if 'items' is this type, and 'size' is set to
+'20', it will display 20 'items' regardless of the number of 'categories/subcategories'
+  
+At the root of the returned object, a field `lastPage` is set to `1` if it is the last page, `0` otherwise.
+
+* Each resource can be filtered to only display a certain depth:
+
+From the root:
+```
+?depth=subcategories
+```
+
+From the leaf:
+```
+?rdepth=subcategories
+```
+The same behaviour could be achieved with the filters, but you may find depth more convinient.
+
+* Each resource except build can be filter to display only 'n' last builds of each item.
+
+```
+?buildcount=1
+```
 
 ##### JSON sample #####
 
