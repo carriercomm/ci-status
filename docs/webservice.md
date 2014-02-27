@@ -6,9 +6,11 @@ NOTICE: WORK IN PROGRESS
 
 #### explaination ####
 
-* level 1 [category]: main categorie, like, for example a version number
-* level 2 [sub-category]: sub-category inside a main category, for example a build target
-* level 3 [item]: final object, for example a build result
+* level 1 [category]: main categorie, like, for example a project
+* level 2 [item]: item, for example a given library
+* level 2 [target]: build target, for example Linux x86, Linux PPC...
+* level 4 [build]: build of a given item 
+* level 5 [test]: unit test result of a build 
 
 ## Webservice resources ##
 
@@ -23,22 +25,23 @@ NOTICE: WORK IN PROGRESS
 
 ##### Methods #####
 
-| URL                                  | Verb   | Description                                                       |
-|--------------------------------------|--------|-------------------------------------------------------------------|
-| /api/v1.0/                           | GET    | List all categories                                               |
-| /api/v1.0/:cat                       | GET    | List all sub-categories of category ':cat'                        |
-| /api/v1.0/:cat/:subcat               | GET    | List all items in category ':cat/:subcat'                         |
-| /api/v1.0/:cat/:subcat/:item         | GET    | Display item ':item' in category ':cat/:subcat'                   |
-| /api/v1.0/:cat/:subcat/:item/:build  | GET    | List the build ':build' of item ':cat/:subcat/:item'              |
-| /api/v1.0/:cat                       | POST   | Create the category ':cat'                                        |
-| /api/v1.0/:cat/:subcat               | POST   | Create the sub-category ':subcat' of category ':cat'              |
-| /api/v1.0/:cat/:subcat/:item         | POST   | Create items ':item' in sub-category ':subcat' of category ':cat' |
-| /api/v1.0/:cat                       | PUT    | Alter the category ':cat'                                         |
-| /api/v1.0/:cat/:subcat               | PUT    | Alter the sub-category ':subcat' of category ':cat'               |
-| /api/v1.0/:cat/:subcat/:item         | PUT    | Alter items ':item' in sub-category ':subcat' of category ':cat'  |
-| /api/v1.0/:cat                       | DELETE | Erase the category ':cat'                                         |
-| /api/v1.0/:cat/:subcat               | DELETE | Erase the sub-category ':subcat' of category ':cat'               |
-| /api/v1.0/:cat/:subcat/:item         | DELETE | Erase items ':item' in sub-category ':subcat' of category ':cat'  |
+| URL                                        | Verb   | Description                                                       |
+|--------------------------------------------|--------|-------------------------------------------------------------------|
+| /api/v1.0/                                 | GET    | List all categories                                               |
+| /api/v1.0/:cat/                            | GET    |  |
+| /api/v1.0/:cat/:item/                      | GET    |  |
+| /api/v1.0/:cat/:item/:target/              | GET    |  |
+| /api/v1.0/:cat/:item/:target/:build/       | GET    |  |
+| /api/v1.0/:cat/:item/:target/:build/:test/ | GET    |  |
+| /api/v1.0/:cat/                            | POST   |  |
+| /api/v1.0/:cat/:item                       | POST   |  |
+| /api/v1.0/:cat/:item/:target               | POST   |  |
+| /api/v1.0/:cat                             | PUT    |  |
+| /api/v1.0/:cat/:item                       | PUT    |  |
+| /api/v1.0/:cat/:item/:target               | PUT    |  |
+| /api/v1.0/:cat                             | DELETE |  |
+| /api/v1.0/:cat/:item                       | DELETE |  |
+| /api/v1.0/:cat/:item/:target               | DELETE |  |
 
 ##### query string #####
 
