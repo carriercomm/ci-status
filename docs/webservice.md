@@ -28,20 +28,26 @@ NOTICE: WORK IN PROGRESS
 | URL                                        | Verb   | Description                                                       |
 |--------------------------------------------|--------|-------------------------------------------------------------------|
 | /api/v1.0/                                 | GET    | List all categories                                               |
-| /api/v1.0/:cat/                            | GET    |  |
-| /api/v1.0/:cat/:item/                      | GET    |  |
-| /api/v1.0/:cat/:item/:target/              | GET    |  |
-| /api/v1.0/:cat/:item/:target/:build/       | GET    |  |
-| /api/v1.0/:cat/:item/:target/:build/:test/ | GET    |  |
-| /api/v1.0/:cat/                            | POST   |  |
-| /api/v1.0/:cat/:item                       | POST   |  |
-| /api/v1.0/:cat/:item/:target               | POST   |  |
-| /api/v1.0/:cat                             | PUT    |  |
-| /api/v1.0/:cat/:item                       | PUT    |  |
-| /api/v1.0/:cat/:item/:target               | PUT    |  |
-| /api/v1.0/:cat                             | DELETE |  |
-| /api/v1.0/:cat/:item                       | DELETE |  |
-| /api/v1.0/:cat/:item/:target               | DELETE |  |
+| /api/v1.0/:cat/                            | GET    | List all items of '/:cat'                                         |
+| /api/v1.0/:cat/:item/                      | GET    | List all targets of '/:cat/:item'                                 |
+| /api/v1.0/:cat/:item/:target/              | GET    | List all builds of '/:cat/:item/:target'                          |
+| /api/v1.0/:cat/:item/:target/:build/       | GET    | List all tests of ':item/:target/:build/:test/'                   |
+| /api/v1.0/:cat/:item/:target/:build/:test/ | GET    | Display ':item/:target/:build/:test/'                             |
+| /api/v1.0/:cat/                            | POST   | Create category  ':cat'                                           |
+| /api/v1.0/:cat/:item/                      | POST   | Create item of '/:cat/:item'                                      |
+| /api/v1.0/:cat/:item/:target/              | POST   | Create target '/:cat/:item/:target'                               |
+| /api/v1.0/:cat/:item/:target/:build        | POST   | Create build '/:cat/:item/:target/:build'                         |
+| /api/v1.0/:cat/:item/:target/:build/:test/ | POST   | Display ':item/:target/:build/:test/'                             |
+| /api/v1.0/:cat/                            | PUT    | List all items ':cat'                                             |
+| /api/v1.0/:cat/:item/                      | PUT    | List all targets of '/:cat/:item'                                 |
+| /api/v1.0/:cat/:item/:target/              | PUT    | List all builds of '/:cat/:item/:target'                          |
+| /api/v1.0/:cat/:item/:target/:build/       | PUT    | List all tests of ':item/:target/:build/:test/'                   |
+| /api/v1.0/:cat/:item/:target/:build/:test/ | PUT    | Display ':item/:target/:build/:test/'                             |
+| /api/v1.0/:cat/                            | DELETE | List all items ':cat'                                             |
+| /api/v1.0/:cat/:item/                      | DELETE | List all targets of '/:cat/:item'                                 |
+| /api/v1.0/:cat/:item/:target/              | DELETE | List all builds of '/:cat/:item/:target'                          |
+| /api/v1.0/:cat/:item/:target/:build/       | DELETE | List all tests of ':item/:target/:build/:test/'                   |
+| /api/v1.0/:cat/:item/:target/:build/:test/ | DELETE | Display ':item/:target/:build/:test/'                             |
 
 ##### query string #####
 
