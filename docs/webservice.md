@@ -31,23 +31,20 @@ NOTICE: WORK IN PROGRESS
 | /api/v1.0/:cat/                            | GET    | List all items of '/:cat'                                         |
 | /api/v1.0/:cat/:item/                      | GET    | List all targets of '/:cat/:item'                                 |
 | /api/v1.0/:cat/:item/:target/              | GET    | List all builds of '/:cat/:item/:target'                          |
-| /api/v1.0/:cat/:item/:target/:build/       | GET    | List all tests of ':item/:target/:build/:test/'                   |
-| /api/v1.0/:cat/:item/:target/:build/:test/ | GET    | Display ':item/:target/:build/:test/'                             |
+| /api/v1.0/:cat/:item/:target/:build/       | GET    | List all tests of ':item/:target/:build'                          |
+| /api/v1.0/:cat/:item/:target/:build/:test/ | GET    | Display  test ':item/:target/:build/:test'                        |
 | /api/v1.0/:cat/                            | POST   | Create category  ':cat'                                           |
 | /api/v1.0/:cat/:item/                      | POST   | Create item of '/:cat/:item'                                      |
 | /api/v1.0/:cat/:item/:target/              | POST   | Create target '/:cat/:item/:target'                               |
 | /api/v1.0/:cat/:item/:target/:build        | POST   | Create build '/:cat/:item/:target/:build'                         |
-| /api/v1.0/:cat/:item/:target/:build/:test/ | POST   | Display ':item/:target/:build/:test/'                             |
-| /api/v1.0/:cat/                            | PUT    | List all items ':cat'                                             |
-| /api/v1.0/:cat/:item/                      | PUT    | List all targets of '/:cat/:item'                                 |
-| /api/v1.0/:cat/:item/:target/              | PUT    | List all builds of '/:cat/:item/:target'                          |
-| /api/v1.0/:cat/:item/:target/:build/       | PUT    | List all tests of ':item/:target/:build/:test/'                   |
-| /api/v1.0/:cat/:item/:target/:build/:test/ | PUT    | Display ':item/:target/:build/:test/'                             |
-| /api/v1.0/:cat/                            | DELETE | List all items ':cat'                                             |
-| /api/v1.0/:cat/:item/                      | DELETE | List all targets of '/:cat/:item'                                 |
-| /api/v1.0/:cat/:item/:target/              | DELETE | List all builds of '/:cat/:item/:target'                          |
-| /api/v1.0/:cat/:item/:target/:build/       | DELETE | List all tests of ':item/:target/:build/:test/'                   |
-| /api/v1.0/:cat/:item/:target/:build/:test/ | DELETE | Display ':item/:target/:build/:test/'                             |
+| /api/v1.0/:cat/:item/:target/:build/:test/ | POST   | Display ':item/:target/:build/:test'                              |
+| /api/v1.0/:cat/                            | PUT    | Alter category ':cat'                                             |
+| /api/v1.0/:cat/:item/                      | PUT    | Alter item '/:cat/:item'                                          |
+| /api/v1.0/:cat/:item/:target/              | PUT    | Alter target '/:cat/:item/:target'                                |
+| /api/v1.0/:cat/                            | DELETE | Delete category ':cat'                                            |
+| /api/v1.0/:cat/:item/                      | DELETE | Delete item '/:cat/:item'                                         |
+| /api/v1.0/:cat/:item/:target/              | DELETE | Delete target '/:cat/:item/:target'                               |
+| /api/v1.0/:cat/:item/:target/:build/       | DELETE | Delete build ':item/:target/:build/:test'                         |
 
 ##### query string #####
 
@@ -55,16 +52,16 @@ Resources accept query string parameters:
 
 * Each resource can be filtered to only give a selection of fields:
 
-Positive filter:
+Positive filter (white list mode):
 
 ```
-?fields=categories(displayName,Desc,subcategories),subcategories(displayName,Desc,items),items(displayName,build),build(status)
+?fields=category(displayName,desc,item),item(displayName,desc,target),target(displayName,build),build(status,test),test(log)
 ````
 
-Negative filter:
+Negative filter (black list mode):
 
 ```
-?nofields=categories(desc),subcategories(desc),items(desc),build(buildLog,buildLogFormat)
+?nofields=category(desc),item(desc),target(desc,build)
 
 ```
 
