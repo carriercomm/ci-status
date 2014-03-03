@@ -52,13 +52,13 @@ Resources accept query string parameters:
 
 * Each resource can be filtered to only give a selection of fields:
 
-Positive filter (white list mode):
+Positive fields list (white list mode):
 
 ```
 ?fields=category(displayName,desc,item),item(displayName,desc,target),target(displayName,build),build(status,test),test(log)
 ````
 
-Negative filter (black list mode):
+Negative fields list (black list mode):
 
 ```
 ?nofields=category(desc),item(desc),target(desc,build)
@@ -66,6 +66,10 @@ Negative filter (black list mode):
 ```
 
 You cannot use Positive filter and Negative filter simultaneously.
+
+* You apply a filter:
+
+?filter=test(status='KO')
 
 * Each resource can be paginated:
 
@@ -82,12 +86,12 @@ At the root of the returned object, a field `lastPage` is set to `1` if it is th
 
 From the root:
 ```
-?depth=subcategories
+?depth=item
 ```
 
 From the leaf:
 ```
-?rdepth=subcategories
+?rdepth=item
 ```
 The same behaviour could be achieved with the filters, but you may find depth more convinient.
 
@@ -101,44 +105,40 @@ The same behaviour could be achieved with the filters, but you may find depth mo
 
 ```json
 {
-    "lastPage" : "1",
-    "categories": [
+  "lastPage" : "1",
+  "cat": [
+     {
+     "id": "my_awesome_project",
+     "displayName": "My awesome project",
+     "status": "OK",
+     "item": [
         {
-            "id": "1.3.0",
-            "displayName": "V1.3.0",
-            "desc": "Version 1.3.0 of My project",
-            "subcategories": [
-                {
-                    "id": "linux_64",
-                    "displayName": "Linux 64 bits",
-                    "desc": "Build for Linux 64 bits",
-                    "items": [
-                        {
-                            "id": "library_1",
-                            "desc": "Library 1",
-                            "build": [ 
-                                {
-                                    "status": "OK",
-                                    "buildLog": "test 0: ok",
-                                    "buildLogFormat": "text",
-                                    "date": "2014-02-06T07:06:00+00:00",
-                                },
-                                {
-                                    "status": "KO",
-                                    "buildLog": "test 0: KO",
-                                    "buildLog_format": "gzip",
-                                    "date": "2014-02-06T07:07:00+00:00"
-                                },
-                                ...
-                            ],
-                        },
-                        ...
-                    ],
-                },
-                ...
-            ]
+        "id": "lib_1",
+        "displayName": "The first library",
+        "status": "OK",
+        "target": [
+          {
+          "id": "linux64",
+          "displayName": "Linux x86_64",
+          "status": 'OK',
+          "build": [ 
+            {
+                "id": "1",
+                "date": "2014-02-06T07:06:00+00:00",
+                "status": "OK",
+                "buildLog": "build: ok",
+                "date": "2014-02-06T07:06:00+00:00",
+                "test": [
+                    "status": "OK",
+                    "testLog": "test 1: ok",
+                ],
+            },
+          ],
+          },
+        ],
         },
-        ...
-    ],
+     ],
+     },
+  ],
 }
 ```
